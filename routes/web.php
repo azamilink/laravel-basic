@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\TestMail;
 use App\PaymentGateway\Payment;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReqController;
 use App\Http\Controllers\BlogController;
@@ -81,3 +83,9 @@ Route::get('payment', function () {
 });
 
 // Test Email
+Route::get('send-email', function () {
+    $email = new TestMail();
+    Mail::to('azamiwandi@hotmail.com')->send($email);
+
+    return 'success';
+});

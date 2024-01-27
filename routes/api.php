@@ -10,7 +10,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// 2. Routing
+// Routing
 Route::get('/users/{name}', function ($name = null) {
     return 'hi ' . $name;
 })->where('name', '[a-zA-Z]+');
@@ -25,11 +25,4 @@ Route::match(['get', 'post'], '/students', function (Request $req) {
 
 Route::any('/posts', function (Request $req) {
     return 'Request method is ' . $req->method();
-});
-
-Route::get('send-email', function () {
-    $email = new TestMail();
-    Mail::to('azamiwandi@hotmail.com')->send($email);
-
-    return 'success';
 });
